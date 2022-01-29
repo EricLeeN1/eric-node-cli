@@ -1,15 +1,21 @@
 {
-  "name": "eric-node-cli",
+  "name": "eric-cli",
   "version": "1.0.0",
-  "description": "Eric Lee's Node template",
+  "description": "Eric Lee's vue template",
   "main": "cli.js",
-  "bin": "cli.js",
+  "bin": {
+    "ze": "./bin/cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Eric Lee",
+  "author": {
+    "name": "Eric Lee",
+    "email": "179310009@qq.com"
+  },
   "license": "ISC",
   "dependencies": {
+    "commander": "^9.0.0",
     "ejs": "^3.1.6",
     "inquirer": "^8.2.0"
   }
