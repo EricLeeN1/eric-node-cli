@@ -9,6 +9,9 @@
 console.log("eric-node-cli working~");
 
 const inquirer = require("inquirer");
+const path = require("path");
+const fs = require("fs");
+const ejs = require("ejs");
 
 inquirer
   .prompt([
@@ -20,6 +23,24 @@ inquirer
     },
   ])
   .then((answers) => {
+    // 模板文件目录
+    const destUrl = path.join(__dirname, "templates");
+    // 生成文件目录
+    // process.cwd() 对应控制台所在目录
+    const cwdUrl = process.cwd();
+    console.log(cwdUrl);
+
+    fs.readdir(destUrl, (err, files) => {
+      if (err) throw err;
+      files.forEach((file) => {
+        // 使用 ejs 渲染对应的模版文件
+        // renderFile(模板文件地址，传入渲染数据)
+        ejs.renderFile(path.join(destUrl, file), answers).then((data) => {
+          // 生成ejs处理后的模板文件
+          fs.writeFileSync(path.join(cwdUrl, file), data);
+        });
+      });
+    });
     // 打印用户输入结果
     console.log(answers);
   });
