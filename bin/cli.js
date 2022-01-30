@@ -11,7 +11,7 @@ console.log("eric-node-cli working~");
 const program = require("commander");
 const inquirer = require("inquirer");
 const path = require("path");
-const fs = require("fs");
+const fs = require("fs-extra");
 const ejs = require("ejs");
 
 // 定义命令和参数
