@@ -13,7 +13,8 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs-extra");
 const ejs = require("ejs");
-
+const chalk = require("chalk");
+const figlet = require("figlet");
 // 定义命令和参数
 program
   .command("create <app-name>")
@@ -24,6 +25,26 @@ program
     console.log("name:", name, "options:", options);
     // 在 create.js 中执行创建任务
     require("../lib/create.js")(name, options);
+  });
+
+program
+  // 监听 --help 执行
+  .on("--help", () => {
+    // 使用 figlet 绘制 Logo
+    console.log(
+      "\r\n" +
+        figlet.textSync("Eric Lee", {
+          font: "Ghost",
+          horizontalLayout: "default",
+          verticalLayout: "default",
+          width: 80,
+          whitespaceBreak: true,
+        })
+    );
+    // 新增说明信息
+    console.log(
+      `\r\nRun ${chalk.cyan(`roc <command> --help`)} show details\r\n`
+    );
   });
 
 program
