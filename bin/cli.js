@@ -22,6 +22,8 @@ program
   .option("-f, --force", "overwrite target directory if it exists")
   .action((name, options) => {
     console.log("name:", name, "options:", options);
+    // 在 create.js 中执行创建任务
+    require("../lib/create.js")(name, options);
   });
 
 program
