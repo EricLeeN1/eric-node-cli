@@ -1,20 +1,26 @@
 # 搭建一个简单的脚手架
 
-可以直接本地搭建一个基于Vite2+Vue3+Ts+Pinia+VueRouter-Template的模板
+build a Vite2+Vue3+Ts+Pinia+VueRouter-Template
 
-## 安装 install it globally
+# Install it globally
 
+## Npm
+
+```
 $ npm install -g ericlee-cli
+```
+## Yarn
 
-# or yarn
+```
 $ yarn global add ericlee-cli
+```
 
-使用
+# Use
 
-Quick Start
+## Quick Start
 
 $ ze create <name> [-f|--force]
 
-Options
+## Options
 
 -f, --force: Overwrite if the target exists
