@@ -1,6 +1,6 @@
 {
   "name": "eric-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Eric Lee's vue template",
   "main": "cli.js",
   "bin": {
@@ -13,6 +13,10 @@
     "name": "Eric Lee",
     "email": "179310009@qq.com"
   },
+  "files": [
+    "bin",
+    "lib"
+  ],
   "license": "ISC",
   "dependencies": {
     "axios": "^0.25.0",
@@ -24,6 +28,6 @@
     "figlet": "^1.5.2",
     "fs-extra": "^10.0.0",
     "inquirer": "^8.2.0",
-    "ora": "^6.0.1"
+    "ora": "5.4.0"
   }
 }
