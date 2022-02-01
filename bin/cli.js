@@ -9,16 +9,13 @@
 console.log("eric-node-cli working~");
 
 const program = require("commander");
-const inquirer = require("inquirer");
-const path = require("path");
-const fs = require("fs-extra");
-const ejs = require("ejs");
 const chalk = require("chalk");
 const figlet = require("figlet");
+
 // 定义命令和参数
 program
   .command("create <app-name>")
-  .description("create a new application")
+  .description("create a new project")
   // -f or --force 为强制创建，如果创建的目录存在则直接覆盖
   .option("-f, --force", "overwrite target directory if it exists")
   .action((name, options) => {
@@ -27,13 +24,39 @@ program
     require("../lib/create.js")(name, options);
   });
 
+// 配置 config 命令
+program
+  .command("config [value]")
+  .description("inspect and modify the config")
+  .option("-g, --get <path>", "get value from option")
+  .option("-s, --set <path> <value>")
+  .option("-d, --delete <path>", "delete option form config")
+  .action((value, options) => {
+    console.log(value, options);
+  });
+
+// 配置 ui 命令
+
+program
+  .command("ui")
+  .description("start add open ze-cli ui")
+  .option("-p, --port <port>", "Port used for the UI Server")
+  .action((option) => {
+    console.log(option);
+  });
+
+program
+  // 配置版本号信息
+  .version(`v${require("../package.json").version}`)
+  .usage("<command> [option]");
+
 program
   // 监听 --help 执行
   .on("--help", () => {
     // 使用 figlet 绘制 Logo
     console.log(
       "\r\n" +
-        figlet.textSync("Eric Lee", {
+        figlet.textSync("Yize Lee", {
           font: "Ghost",
           horizontalLayout: "default",
           verticalLayout: "default",
@@ -43,46 +66,9 @@ program
     );
     // 新增说明信息
     console.log(
-      `\r\nRun ${chalk.cyan(`roc <command> --help`)} show details\r\n`
+      `\r\nRun ${chalk.cyan(`ze <command> --help`)} show details\r\n`
     );
   });
 
-program
-  // 配置版本号信息
-  .version(`v${require("../package.json").version}`)
-  .usage("<command> [option>]");
-
 // 解析用户执行命令传入参数
 program.parse(process.argv);
-
-// inquirer
-//   .prompt([
-//     {
-//       type: "input", // input, number, confirm, list, checkbox ...
-//       name: "name", // key 名
-//       message: "You name", // 提示信息
-//       default: "eric-node-cli", // 默认值
-//     },
-//   ])
-//   .then((answers) => {
-//     // 模板文件目录
-//     const destUrl = path.join(__dirname, "templates");
-//     // 生成文件目录
-//     // process.cwd() 对应控制台所在目录
-//     const cwdUrl = process.cwd();
-//     console.log(cwdUrl);
-
-//     fs.readdir(destUrl, (err, files) => {
-//       if (err) throw err;
-//       files.forEach((file) => {
-//         // 使用 ejs 渲染对应的模版文件
-//         // renderFile(模板文件地址，传入渲染数据)
-//         ejs.renderFile(path.join(destUrl, file), answers).then((data) => {
-//           // 生成ejs处理后的模板文件
-//           fs.writeFileSync(path.join(cwdUrl, file), data);
-//         });
-//       });
-//     });
-//     // 打印用户输入结果
-//     console.log(answers);
-//   });
