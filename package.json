@@ -17,7 +17,7 @@
     "bin",
     "lib"
   ],
-  "license": "ISC",
+  "license": "LTS",
   "dependencies": {
     "axios": "^0.25.0",
     "chalk": "4.1.1",
