@@ -1,6 +1,6 @@
 {
   "name": "ericlee-cli",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Eric Lee's vue template",
   "main": "cli.js",
   "bin": {
